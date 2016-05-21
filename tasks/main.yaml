@@ -1,0 +1,30 @@
+---
+
+- name: Install PHP
+  package:
+    name: "{{ php_pkg }}"
+  tags:
+    - php_pkg
+
+- name: Install PHP extensions
+  package:
+    name: php-{{ item }}
+  with_items: "{{ php_extensions_pkgs }}"
+  tags:
+    - php_pkg
+
+- name: Configure main PHP file
+  template:
+    src: php.ini.j2
+    dest: "{{ php_config_file }}"
+  when: php_config is not none
+  tags:
+    - php_config
+
+- name: Configure PHP extension
+  template:
+    src: extension.ini.j2
+    dest: "{{ php_config_dir }}/{{ item.key }}.ini"
+  with_dict: "{{ php_extensions_config }}"
+  tags:
+    - php_config
