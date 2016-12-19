@@ -245,7 +245,7 @@ Dependencies
 ------------
 
 - [`config_encoder_filters`](https://github.com/jtyr/ansible-config_encoder_filters)
-- [`php-fpm`](https://github.com/jtyr/ansible-php_fpm) role (optional)
+- [`php_fpm`](https://github.com/jtyr/ansible-php_fpm) role (optional)
 
 
 License
