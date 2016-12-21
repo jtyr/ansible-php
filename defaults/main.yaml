@@ -1,7 +1,19 @@
 ---
 
+# Whether to install the SCL YUM repo
+php_scl_yumrepo_install: no
+
+# SCL YUM repo URL
+php_scl_yumrepo_url: http://mirror.centos.org/centos/$releasever/sclo/$basearch/rh/
+
+# Additional SCL YUM repo params
+php_scl_yumrepo_params: {}
+
 # Package to be installed (explicit version can be specified here)
 php_pkg: php
+
+# Exptensions prefix (set it to null to use no prefix)
+php_extensions_prefix: php
 
 # Extensions packages to be installed
 php_extensions_pkgs: []

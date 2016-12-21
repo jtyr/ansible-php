@@ -1,5 +1,16 @@
 ---
 
+- name: Add SCL YUM repo
+  yum_repository:
+    name: scl
+    description: SCL YUM repo
+    baseurl: "{{ php_scl_yumrepo_url }}"
+    gpgcheck: no
+    params: "{{ php_scl_yumrepo_params }}"
+  when: php_scl_yumrepo_install
+  tags:
+    - php_pkg
+
 - name: Install PHP
   package:
     name: "{{ php_pkg }}"
@@ -8,7 +19,7 @@
 
 - name: Install PHP extensions
   package:
-    name: php-{{ item }}
+    name: "{{ php_extensions_prefix ~ '-' if php_extensions_prefix is not none else '' }}{{ item }}"
   with_items: "{{ php_extensions_pkgs }}"
   tags:
     - php_pkg
