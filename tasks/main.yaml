@@ -7,7 +7,7 @@
     baseurl: "{{ php_scl_yumrepo_url }}"
     gpgcheck: no
     params: "{{ php_scl_yumrepo_params }}"
-  when: php_scl_yumrepo_install
+  when: php_scl_yumrepo_install == true
   tags:
     - php_pkg
 
