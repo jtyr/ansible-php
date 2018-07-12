@@ -15,7 +15,7 @@ Please report any issues or send PR.
 Examples
 --------
 
-```
+```yaml
 ---
 
 # Example of how to use the role with default parameters
@@ -45,7 +45,19 @@ Role variables
 
 Variables used by the role is as follows:
 
-```
+```yaml
+# Whether to install EPEL YUM repo
+php_epel_yumrepo_install: "{{ yumrepo_epel_install | default(false) }}"
+
+# EPEL YUM repo URL
+php_epel_yumrepo_url: "{{ yumrepo_epel_url | default('https://dl.fedoraproject.org/pub/epel/$releasever/$basearch/') }}"
+
+# EPEL YUM repo GPG key
+php_epel_yumrepo_gpgkey: "{{ yumrepo_epel_gpgkey | default('https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-$releasever') }}"
+
+# Additional EPEL params
+php_epel_yumrepo_params: "{{ yumrepo_epel_params | default({}) }}"
+
 # Whether to install the SCL YUM repo
 php_scl_yumrepo_install: no
 
